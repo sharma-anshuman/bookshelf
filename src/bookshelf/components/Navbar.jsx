@@ -12,13 +12,11 @@ import { GetBooks } from "../context/BooksContext";
 
 const Navbar = () => {
   const loc = useLocation().pathname;
-  const {dispatch} = GetBooks();
+  const { BooksCategories, dispatch } = GetBooks();
   const navigate = useNavigate();
-  const [currSearch, setSearch] = useState("");
   const searchHandler = (event) => {
-    setSearch(event.target.value);
-    dispatch({type: "search", id: event.target.value})
-  }
+    dispatch({ type: "search", id: event.target.value });
+  };
 
   return (
     <nav className="font-sans flex flex-col text-center sm:flex-row sm:text-left sm:justify-between py-4 px-6 bg-white shadow sm:items-baseline w-full">
@@ -37,7 +35,7 @@ const Navbar = () => {
             className="px-1 py-[3px] text-md border-gray-400 outline-none h-max-[5px] m-0 w-[20rem] border border-2 rounded"
             placeholder="Search"
             type="text"
-            value={currSearch}
+            value={BooksCategories.searchQuery}
             onChange={searchHandler}
           />
         </div>

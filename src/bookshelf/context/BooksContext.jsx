@@ -14,8 +14,9 @@ const BooksContext = ({ children }) => {
                   name.toLowerCase().includes(id.toLowerCase())
                 ).map(({ id: i }) => i),
               ],
+              searchQuery: id
             }
-          : { ...acc, search: [] };
+          : { ...acc, search: [], searchQuery: id };
       }
 
       case "ntc": {
@@ -117,6 +118,7 @@ const BooksContext = ({ children }) => {
     reading: [...getFilteredBooks("reading")],
     read: [...getFilteredBooks("read")],
     want: [...getFilteredBooks("want")],
+    searchQuery: "",
     search: [],
   });
 
